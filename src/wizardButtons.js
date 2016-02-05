@@ -1,4 +1,5 @@
 function wizardButtonDirective(action) {
+    'use strict';
     angular.module('mgo-angular-wizard')
         .directive(action, function() {
             return {

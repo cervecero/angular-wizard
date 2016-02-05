@@ -1,4 +1,5 @@
 angular.module('mgo-angular-wizard').directive('wzStep', function() {
+    'use strict';
     return {
         restrict: 'EA',
         replace: true,
@@ -16,8 +17,17 @@ angular.module('mgo-angular-wizard').directive('wzStep', function() {
           return attributes.template || "step.html";
         },
         link: function($scope, $element, $attrs, wizard) {
+            initializeStep();
             $scope.title = $scope.wzTitle;
             wizard.addStep($scope);
+
+            function initializeStep () {
+                    $scope.hide = true;
+                    $scope.active = $scope.done = false;
+                    if($scope.editMode){
+                        $scope.done = true;
+                    }
+            }
         }
     };
 });
